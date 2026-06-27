@@ -1,0 +1,23 @@
+# Build outputs and caches
+gradle-wrapper.jar
+/.gradle
+/captures/
+/gradlew
+/gradlew.bat
+.cxx/
+build/
+
+# Sensitive files - NEVER commit
+local.properties
+key.properties
+**/*.keystore
+**/*.jks
+app/google-services.json
+
+# IDE
+GeneratedPluginRegistrant.java
+*.iml
+.idea/
+
+# Kotlin
+.kotlin/

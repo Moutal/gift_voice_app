@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+REAL_CODESIGN="/usr/bin/codesign"
+
+# codesign target is normally the last argument.
+target="${@: -1}"
+
+run_real() {
+  "$REAL_CODESIGN" "$@"
+}
+
+# Simulator binaries don't require strict signing the same way as device builds.
+# Xcode/Flutter currently fails on some hosts with:
+# "resource fork, Finder information, or similar detritus not allowed"
+if [[ "$target" == *"iphonesimulator"* ]] || [[ "$target" == *"Debug-iphonesimulator"* ]]; then
+  # Best effort cleanup before attempting real codesign.
+  /usr/bin/xattr -cr "$target" >/dev/null 2>&1 || true
+  /usr/bin/xattr -r -d com.apple.FinderInfo "$target" >/dev/null 2>&1 || true
+  /usr/bin/xattr -r -d com.apple.provenance "$target" >/dev/null 2>&1 || true
+
+  set +e
+  output="$("$REAL_CODESIGN" "$@" 2>&1)"
+  status=$?
+  set -e
+
+  if [[ $status -eq 0 ]]; then
+    exit 0
+  fi
+
+  if [[ "$output" == *"resource fork, Finder information, or similar detritus not allowed"* ]]; then
+    echo "codesign shim: ignoring simulator detritus signing failure for $target" >&2
+    exit 0
+  fi
+
+  echo "$output" >&2
+  exit $status
+fi
+
+exec "$REAL_CODESIGN" "$@"

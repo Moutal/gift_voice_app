@@ -1,0 +1,147 @@
+# ============================================================================
+# Miscellaneous
+# ============================================================================
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# ============================================================================
+# IDE / Editor
+# ============================================================================
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ============================================================================
+# Flutter / Dart
+# ============================================================================
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# ============================================================================
+# Android
+# ============================================================================
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+/android/app/build/
+/android/build/
+/android/.gradle/
+/android/.kotlin/
+/android/.cxx/
+android/captures/
+android/.gradle/
+
+# Sensitive Android files
+android/local.properties
+android/key.properties
+android/app/google-services.json
+**/*.keystore
+**/*.jks
+
+# ============================================================================
+# iOS / macOS
+# ============================================================================
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/.last_build_id
+ios/Flutter/flutter_export_environment.sh
+ios/Runner/GoogleService-Info.plist
+Podfile.lock
+**/ios/Flutter/GeneratedPluginRegistrant.*
+
+# macOS build
+macos/Flutter/Flutter.framework
+macos/Flutter/flutter_export_environment.sh
+macos/Podfile.lock
+macos/Pods/
+
+# ============================================================================
+# Credentials & Secrets (CRITICAL)
+# ============================================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+*secret*
+assets/ai_config.json
+.firebaserc
+service-account.json
+firebase-admin-*.json
+
+# ============================================================================
+# Node/Firebase Functions
+# ============================================================================
+functions/node_modules/
+functions/.env*
+functions/lib/
+functions/dist/
+.npm-cache/
+.tooling/
+
+# ============================================================================
+# Temporary Files
+# ============================================================================
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ============================================================================
+# OS Files
+# ============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ============================================================================
+# Build Output
+# ============================================================================
+/dist/
+*.apk
+*.aar
+*.jar
+
+# ============================================================================
+# Coverage / Testing
+# ============================================================================
+/coverage/
+.nyc_output/
+*.lcov

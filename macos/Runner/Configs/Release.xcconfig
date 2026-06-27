@@ -1,0 +1,4 @@
+#include "../../Flutter/Flutter-Release.xcconfig"
+#include "Warnings.xcconfig"
+INFOPLIST_KEY_NSMicrophoneUsageDescription = This app needs microphone access to capture gift entries by voice.
+INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = This app needs speech recognition to transcribe gift entries.

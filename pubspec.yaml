@@ -1,0 +1,40 @@
+name: gift_voice_app
+description: Event Gift Keeper - a voice-assisted app for recording, organizing, and exporting event gifts.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+  provider: ^6.1.2
+  pdf: ^3.10.8
+  printing: ^5.14.2
+  csv: ^5.1.1
+  share_plus: ^7.2.2
+  shared_preferences: ^2.5.3
+  firebase_core: ^3.15.2
+  firebase_auth: ^5.6.2
+  cloud_firestore: ^5.6.11
+  firebase_crashlytics: ^4.3.10
+  google_sign_in: ^6.2.1
+  http: ^1.2.2
+  path_provider: ^2.1.4
+  record: ^6.2.0
+  cloud_functions: ^5.6.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/ai_config.json

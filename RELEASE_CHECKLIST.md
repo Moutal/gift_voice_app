@@ -17,34 +17,34 @@ Last updated: 2026-06-27
 - [x] API key files are ignored by Git.
 - [x] `google-services.json` is not tracked by Git.
 - [x] `GoogleService-Info.plist` is not tracked by Git.
-- [~] Remove `assets/ai_config.json` from Flutter release assets.
-- [ ] Add Firestore rules file to repo.
-- [ ] Configure `firebase.json` to deploy Firestore rules.
-- [ ] Verify users can only read/write their own gift entries.
-- [ ] Add rules tests or documented rules test cases.
+- [x] Remove `assets/ai_config.json` from Flutter release assets.
+- [x] Add Firestore rules file to repo.
+- [x] Configure `firebase.json` to deploy Firestore rules.
+- [x] Verify users can only read/write their own gift entries.
+- [~] Add rules tests or documented rules test cases.
 - [ ] Enable Firebase App Check for Android.
 - [ ] Enable Firebase App Check for iOS.
 - [ ] Enforce App Check for callable Functions after testing.
 - [ ] Enforce App Check for Firestore after testing.
-- [ ] Confirm Functions require authenticated users.
+- [x] Confirm Functions require authenticated users.
 - [ ] Rate-limit or abuse-protect AI endpoints.
 - [ ] Review Crashlytics data for sensitive payloads.
-- [ ] Confirm transcripts/audio are not stored unless intended.
+- [x] Confirm transcripts/audio are not stored unless intended.
 - [ ] Remove stale references to local API key setup from docs.
 - [ ] Rotate Gemini key before public release.
 
 ### Android Release
 
-- [ ] Create release keystore.
-- [ ] Add `android/key.properties` locally.
-- [ ] Configure release signing in `android/app/build.gradle.kts`.
-- [ ] Stop signing release builds with debug key.
-- [ ] Enable code shrinking for release.
-- [ ] Add or verify Proguard/R8 rules.
-- [ ] Build signed AAB with `flutter build appbundle --release`.
-- [ ] Install and smoke-test release build.
+- [x] Create release keystore.
+- [x] Add `android/key.properties` locally.
+- [x] Configure release signing in `android/app/build.gradle.kts`.
+- [x] Stop signing release builds with debug key.
+- [x] Enable code shrinking for release.
+- [x] Add or verify Proguard/R8 rules.
+- [x] Build signed AAB with `flutter build appbundle --release`.
+- [x] Install and smoke-test release build.
 - [ ] Verify app name in launcher.
-- [ ] Verify package name is final: `com.eventgiftkeeper.app`.
+- [x] Verify package name is final: `com.eventgiftkeeper.app`.
 
 ### Stability
 
@@ -180,9 +180,9 @@ Last updated: 2026-06-27
 - [ ] Feature graphic created.
 - [ ] Phone screenshots created.
 - [ ] Tablet screenshots created if tablet support is claimed.
-- [ ] Short description written.
-- [ ] Full description written.
-- [ ] Privacy policy URL ready.
+- [x] Short description written.
+- [x] Full description written.
+- [~] Privacy policy URL ready.
 - [ ] Support email ready.
 - [ ] Data Safety answers completed.
 - [ ] Content rating completed.
@@ -205,13 +205,13 @@ Last updated: 2026-06-27
 - [ ] iPhone screenshots created.
 - [ ] iPad screenshots created if supported.
 - [ ] App icon verified at 1024x1024.
-- [ ] Subtitle written.
+- [x] Subtitle written.
 - [ ] Promotional text written.
-- [ ] Description written.
-- [ ] Keywords written.
+- [x] Description written.
+- [x] Keywords written.
 - [ ] Support URL ready.
 - [ ] Marketing URL ready if available.
-- [ ] Privacy policy URL ready.
+- [~] Privacy policy URL ready.
 - [ ] App Privacy answers completed.
 - [ ] TestFlight internal group created.
 - [ ] TestFlight external group prepared.

@@ -1910,6 +1910,10 @@ class _GiftHomePageState extends State<GiftHomePage> {
     List<int> audioBytes,
     String? languageHint,
   ) async {
+    final token = await FirebaseAuth.instance.currentUser?.getIdToken();
+    if (token == null || token.isEmpty) {
+      throw Exception('You must be signed in before using AI transcription.');
+    }
     const projectId = 'gift-tracker-98088';
     final uri = Uri.parse(
       'https://us-central1-$projectId.cloudfunctions.net/aiTranscribeAndParseHttp',
@@ -1918,7 +1922,10 @@ class _GiftHomePageState extends State<GiftHomePage> {
     final response = await http
         .post(
           uri,
-          headers: const <String, String>{'Content-Type': 'application/json'},
+          headers: <String, String>{
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $token',
+          },
           body: jsonEncode(<String, dynamic>{
             'audioBase64': base64Encode(audioBytes),
             'mimeType': 'audio/mp4',

@@ -3,6 +3,9 @@ const {
   onRequest,
   HttpsError,
 } = require("firebase-functions/v2/https");
+const admin = require("firebase-admin");
+
+admin.initializeApp();
 
 const REGION = "us-central1";
 const MODEL = "gemini-2.5-flash";
@@ -17,7 +20,12 @@ exports.aiTranscribeAndParse = onCall(
     memory: "512MiB",
     secrets: ["GEMINI_API_KEY"],
   },
-  async (request) => handleAiTranscribeAndParse(request.data)
+  async (request) => {
+    if (!request.auth) {
+      throw new HttpsError("unauthenticated", "Sign in is required.");
+    }
+    return handleAiTranscribeAndParse(request.data);
+  }
 );
 
 exports.aiTranscribeAndParseHttp = onRequest(
@@ -43,15 +51,33 @@ exports.aiTranscribeAndParseHttp = onRequest(
     }
 
     try {
+      await verifyHttpRequestAuth(request);
       const result = await handleAiTranscribeAndParse(request.body || {});
       response.status(200).json(result);
     } catch (error) {
       const message =
         error instanceof HttpsError ? error.message : String(error.message || error);
-      response.status(400).json({ error: message });
+      const status = error instanceof HttpsError && error.code === "unauthenticated"
+        ? 401
+        : 400;
+      response.status(status).json({ error: message });
     }
   }
 );
+
+async function verifyHttpRequestAuth(request) {
+  const header = request.get("Authorization") || "";
+  const match = header.match(/^Bearer\s+(.+)$/i);
+  if (!match) {
+    throw new HttpsError("unauthenticated", "Missing authorization token.");
+  }
+
+  try {
+    await admin.auth().verifyIdToken(match[1]);
+  } catch (error) {
+    throw new HttpsError("unauthenticated", "Invalid authorization token.");
+  }
+}
 
 async function handleAiTranscribeAndParse(data) {
   const audioBase64 = data?.audioBase64;
